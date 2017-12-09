@@ -7,6 +7,7 @@
     <title>通用测试文件</title>
 </head>
 <body>
+    <p>nihao</p>
 
 
 
@@ -14,14 +15,9 @@
     <script src="./jQuery库/jQuery 3.2.1.js"></script>
 
     <script>
-        jQuery(document).ready(function() {
-            console.log("hellow");
-        });
         $(document).ready(function() {
-            console.log("hellow 2");
-        });
-        $(function() {
-            console.log("hellow 3");
+            $("p").css({"background-color":"red", "color":"white"});
+            console.log($("p.aaa"));
         });
     </script>
 </body>
