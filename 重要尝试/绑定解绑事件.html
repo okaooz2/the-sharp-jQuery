@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定解绑事件</title>
+</head>
+<body>
+    <img src="../image/jpg_1.jpg" alt="">
+    <br>
+    <hr>
+    <button>绑定事件</button>
+    <button>解绑事件</button>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    $(function() {
+        //为图片绑定事件
+        $("button").eq(0).bind("click", function() {
+            var i=0;
+            // $("img").click(function() {
+            //     // this.src = "../image/jpg_2.jpg";
+            //     if((i++)%2 === 0) {
+            //         this.src = "../image/jpg_2.jpg";
+            //     }
+            //     else {
+            //         this.src = "../image/jpg_1.jpg";
+            //     }
+            // });
+            
+            $("img").bind("click", function() {
+                // this.src = "../image/jpg_2.jpg";
+                if((i++)%2 === 0) {
+                    this.src = "../image/jpg_2.jpg";
+                }
+                else {
+                    this.src = "../image/jpg_1.jpg";
+                }
+            }); 
+        });
+        //为图片解绑事件
+        $("button").eq(1).bind("click", function() {
+            $("img").unbind("click");
+            //以绑定代码证明，bind事件绑定的事件不会相互覆盖，而会相互叠加
+            // $("img").bind("click", function() {
+            //     alert("New bind event!");
+            // });
+        });
+    });
+</script>
+</html>

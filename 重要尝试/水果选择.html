@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水果选择</title>
+    <style>
+        #fruit-select {
+            display: block;
+            height: 500px;
+        }
+        #fruit-select select {
+            width: 100px;
+            height: 500px;
+        }
+        #fruit-select > div {
+            display: inline-block;
+            width: 50px;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #fruit-select > div > div {
+            transform: translate(0, -50%);
+        }
+        #fruit-select button:nth-child(2) {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fruit-select">
+        <select name="select1" id="select1" multiple>
+            <option value="0">苹果</option>
+            <option value="1">香蕉</option>
+            <option value="2">梨子</option>
+            <option value="3">西瓜</option>
+            <option value="4">石榴</option>
+            <option value="5">桌子</option>
+            <option value="6">椅子</option>
+            <option value="7">鼠标</option>
+            <option value="8">书籍</option>
+            <option value="9">台灯</option>
+        </select>
+        <div>
+            <div>
+                <button>>></button>
+                <button><<</button>
+            </div>
+        </div> 
+        <select name="select2" id="select2" size="2" multiple></select>
+    </div>
+    
+    <script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+
+    <script>
+        /**
+            原生js实现 
+        */
+        // window.onload = function() {
+        //     var to_right_btn = document.querySelector("#fruit-select button:first-child");
+        //     to_right_btn.addEventListener("click", function(event) {
+        //         var options = document.querySelectorAll("#select1 option");
+        //         var select2 = document.querySelector("#fruit-select #select2");
+        //         for(let i=0, len=options.length; i<len; ++i) {
+        //             if(options[i].selected) {
+        //                 select2.appendChild(options[i]);
+        //                 options[i].selected = false;
+        //             }
+        //         }
+        //     }, false);
+
+        //     var to_left_btn = document.querySelector("#fruit-select button:nth-child(2)");
+        //     to_left_btn.addEventListener("click", function(event) {
+        //         var options = document.querySelectorAll("#select2 option");
+        //         var select1 = document.querySelector("#fruit-select #select1");
+        //         for(let i=0, len=options.length; i<len; ++i) {
+        //             if(options[i].selected) {
+        //                 select1.appendChild(options[i]);
+        //                 options[i].selected = false;
+        //             }
+        //         }
+        //     }, false);
+        // };
+
+        /**
+            通过jQ实现
+        */
+            $(document).ready(function() {
+                //绑定右移按钮
+                $("#fruit-select button:first-child").click(function(event) {
+                    $("#fruit-select #select1 option").each(function() {
+                        if($(this).prop("selected")) {
+                            $(this).appendTo($("#fruit-select #select2")).prop({"selected":false});
+                        }
+                    });
+                });
+                //绑定左移按键
+                $("#fruit-select button:nth-child(2)").click(function(event) {
+                    $("#fruit-select #select2 option").each(function() {
+                        if($(this).prop("selected")) {
+                            $(this).appendTo($("#fruit-select #select1")).prop({"selected":false});
+                        }
+                    });
+                });
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽功能</title>
+    <style>
+        .drag {
+            display: inline-block;
+            position: absolute;
+            background: #ccc;
+        }
+        .drag img {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag">
+        <img src="../image/png_2.png" alt="">
+    </div>
+</body>
+<script>
+    //原生js实现
+    var div = document.querySelector("div.drag");
+    div.addEventListener("mousedown", drag, false);
+    div.addEventListener("mousemove", drag, false);
+    div.addEventListener("mouseup", drag, false);
+
+    var detaX = -100;
+    var detaY = -100;
+    var can_move = false;
+    function drag(event) {
+        switch(event.type) {
+            case "mousedown": 
+                detaX = event.clientX - this.offsetLeft;
+                detaY = event.clientY - this.offsetTop;
+                can_move = true;
+                break;
+            case "mousemove": 
+                if(can_move) {
+                    this.style.left = event.clientX - detaX + "px";
+                    this.style.top = event.clientY - detaY + "px";
+                    event.preventDefault();     //禁止图片拖动时的默认样式
+                }
+                break;
+            case "mouseup": 
+                can_move = false;
+                break;
+        }
+    }
+</script>
+</html>

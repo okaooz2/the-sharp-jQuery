@@ -9,8 +9,8 @@
 		$(function(){
 		  //注意区分类似这样的选择器
 		  //虽然一个空格，却截然不同的效果.
-		   var $t_a = $('.test :hidden');
-		   var $t_b = $('.test:hidden');
+		   var $t_a = $('.test :hidden');console.log($t_a);
+		   var $t_b = $('.test:hidden');console.log($t_b);
 		   var len_a = $t_a.length;
 		   var len_b = $t_b.length;
 		   $("<p>$('.test :hidden')的长度为"+len_a+"</p>").appendTo("body");

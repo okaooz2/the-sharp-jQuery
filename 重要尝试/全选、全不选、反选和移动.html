@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全选、全不选、反选和移动</title>
+</head>
+<body>
+    <div id="selection">
+        <p>
+            <label>
+                <input type="checkbox" checked> 苹果
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 香蕉
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox" checked> 栗子
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 西瓜
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 橘子
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 哈密瓜
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 凳子
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="checkbox"> 椅子
+            </label>
+        </p>
+    </div>
+
+    <hr>
+    <button id="all">全选</button>
+    <button id="notall">全不选</button>
+    <button id="rever">反选</button>
+    <button id="move">移动</button>
+    <hr>
+    <div id="board"></div>
+
+
+
+    <script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+
+    <script>
+        //绑定全选按钮
+        $("#all").click(function(event) {
+            //把所有选项框标记为已选
+            // $("#selection :checkbox").attr({"checked":true});
+            $("#selection :checkbox").prop({"checked":true});
+        });
+        //绑定全不选按钮
+        $("#notall").click(function(event) {
+            //把所有选项框标记为未选
+            // $("#selection :checkbox").attr({"checked":false});
+            $("#selection :checkbox").prop({"checked":false});
+        });
+        //绑定反选按钮sd
+        $("#rever").click(function(event) {
+            //把所有选项框标记反转
+            $("#selection :checkbox").each(function() {
+                this.checked = !this.checked;
+            });
+            
+        });
+        //绑定移动按钮
+        $("#move").click(function(event) {
+            $("#selection :checked").parent().parent().appendTo($("#board"));
+            // $("#selection :checked").parent().parent().prependTo($("#board"));
+        });
+    </script>
+</body>
+</html>

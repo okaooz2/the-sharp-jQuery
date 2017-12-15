@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东左侧导航栏</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑;
+            font-size: 1em;
+        }
+
+        body {
+            background: #f6f6f6;
+        }
+
+        #top {
+            height: 80px;
+            background: #000 url("./image/jd-top.jpg") no-repeat 50% 50%;
+        }
+
+        #search {
+            height: 140px;
+        }
+
+        #nav {
+            width: 790px;
+            margin: 0 auto;
+        }
+        #nav ul {
+            list-style: none;
+            overflow: hidden;
+        }
+        #nav ul li {
+            float: left;
+            margin-left: 30px;
+            line-height: 2em;
+        }
+        #nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.05em;
+            font-weight: bold;
+        }
+        #nav ul li:hover a {
+            color: #c81623;
+        }
+
+        #menu {
+            text-align: center;
+            height: 480px;
+            margin-bottom: 10px;
+        }
+        #menu .left {
+            display: inline-block;
+            position: relative;
+            height: 100%;
+            /* overflow: hidden; */
+            top: -12px;
+            margin-right: 5px;
+            background: #6e6568;
+        }
+        #menu .left ul {
+            list-style: none;
+            width: 190px;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        #menu .left ul li {
+            display: block;
+            width: 190px;
+            text-align: left;
+            padding-left: 13px;
+            line-height: 1.95em;
+            font-size: 0.9em;
+            color: #fff;
+        }
+        #menu .left ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        #menu .left .content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            width: 810px;
+            color: #000;
+            top: 0px;
+            left: 190px;
+        }
+        #menu .left .content a {
+            color: #0f0;
+        }
+        #menu .left a:hover {
+            color: #c81623;
+        }
+        #menu .left ul li:hover .content {
+            display: block;
+        }
+        #menu .left ul li:hover {
+            background: #999395;
+        }
+        #menu .center {
+            display: inline-block;
+            overflow: hidden;
+            width: 790px;
+            height: 100%;
+            margin-right: 5px;
+            color: #000;
+        }
+        #menu .center img {
+            float: left;
+        }
+        #menu .center img:first-child {
+            margin-bottom: 10px;
+        }
+        #menu .center img:nth-child(2) {
+            margin-right: 10px;
+        }
+        #menu .rigth {
+            display: inline-block;
+            width: 190px;
+            height: 100%;
+            background: #0ff;
+        }
+        
+
+
+        #others {
+            width: 1190px;
+            background: #ff0;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        
+    </div>
+
+    <div id="search">
+
+    </div>
+
+    <div id="nav">
+        <ul>
+            <li><a href="">秒杀</a></li>
+            <li><a href="">优惠券</a></li>
+            <li><a href="">闪购</a></li>
+            <li><a href="">拍卖</a></li>
+            <li><a href="">京东服饰</a></li>
+            <li><a href="">京东超市</a></li>
+            <li><a href="">生鲜</a></li>
+            <li><a href="">全球购</a></li>
+            <li><a href="">京东金融</a></li>
+        </ul>
+    </div>
+
+    <div id="menu">
+        <div class="left">
+            <ul>
+                <li>
+                    <span>
+                        <a href="">家用电器</a>
+                    </span>
+                    <div class="content">
+                        <h1>家用电器</h1>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                    </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">手机</a> / <a href="">运营商</a> / <a href="">数码</a>
+                    </span>
+                    <div class="content">
+                            <h1>手机</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">电脑</a> / <a href="">办公</a>
+                    </span>
+                    <div class="content">
+                            <h1>电脑</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">家居</a> / <a href="">家具</a> / <a href="">家装</a> / <a href="">厨具</a>
+                    </span>
+                    <div class="content">
+                            <h1>家居</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">男装</a> / <a href="">女装</a> / <a href="">童装</a> / <a href="">内衣</a>
+                    </span>
+                    <div class="content">
+                            <h1>男装</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">美妆个护</a> / <a href="">宠物</a>
+                    </span>
+                    <div class="content">
+                            <h1>美妆个护</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">女鞋</a> / <a href="">箱包</a> / <a href="">钟表</a> / <a href="">珠宝</a>
+                    </span>
+                    <div class="content">
+                            <h1>女鞋</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">男鞋</a> / <a href="">运动</a> / <a href="">户外</a>
+                    </span>
+                    <div class="content">
+                            <h1>男鞋</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">汽车</a> / <a href="">汽车用品</a>
+                    </span>
+                    <div class="content">
+                            <h1>汽车</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">母婴</a> / <a href="">玩具乐器</a>
+                    </span>
+                    <div class="content">
+                            <h1>母婴</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">食品</a> / <a href="">酒类</a> / <a href="">生鲜</a> / <a href="">特产</a>
+                    </span>
+                    <div class="content">
+                            <h1>食品</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">礼品鲜花</a> / <a href="">农资绿植</a>
+                    </span>
+                    <div class="content">
+                            <h1>礼品鲜花</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">医药保健</a> / <a href="">计生情趣</a>
+                    </span>
+                    <div class="content">
+                            <h1>医药保健</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">图书</a> / <a href="">音像</a> / <a href="">电子书</a>
+                    </span>
+                    <div class="content">
+                            <h1>图书</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">机票</a> / <a href="">酒店</a> / <a href="">旅游</a> / <a href="">生活</a>
+                    </span>
+                    <div class="content">
+                            <h1>机票</h1>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                            <a href="">linux</a><p> java</p>
+                        </div>
+                </li>
+                <li>
+                    <span>
+                        <a href="">理财</a> / <a href="">众筹</a> / <a href="">白条</a> / <a href="">保险</a>
+                    </span>
+                    <div class="content">
+                        <h1>理财</h1>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                        <a href="">linux</a><p> java</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="center">
+            <img src="./image/jd-img1.jpg" alt="">
+            <img src="./image/jd-img2.jpg" alt="">
+            <img src="./image/jd-img3.jpg" alt="">
+        </div>
+
+        <div class="rigth">
+           
+        </div>
+    </div>
+
+    <div id="others">
+        <h1>00000000000001</h1>
+        <h1>00000000000002</h1>
+        <h1>00000000000003</h1>
+        <h1>00000000000004</h1>
+        <h1>00000000000005</h1>
+        <h1>00000000000006</h1>
+        <h1>00000000000007</h1>
+        <h1>00000000000008</h1>
+        <h1>00000000000009</h1>
+        <h1>00000000000010</h1>
+        <h1>00000000000011</h1>
+        <h1>00000000000012</h1>
+        <h1>00000000000013</h1>
+        <h1>00000000000014</h1>
+        <h1>00000000000015</h1>
+        <h1>00000000000016</h1>
+        <h1>00000000000017</h1>
+        <h1>00000000000018</h1>
+        <h1>00000000000019</h1>
+        <h1>00000000000020</h1>
+        <h1>00000000000021</h1>
+        <h1>00000000000022</h1>
+        <h1>00000000000023</h1>
+        <h1>00000000000024</h1>
+        <h1>00000000000025</h1>
+        <h1>00000000000026</h1>
+        <h1>00000000000027</h1>
+        <h1>00000000000028</h1>
+        <h1>00000000000029</h1>
+        <h1>00000000000030</h1>
+    </div>
+</body>
+</html>

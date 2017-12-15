@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽功能</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        
+        .div {
+            display: inline-block;
+            position: absolute;
+            background: #ccc;
+            border: 10px solid #00f;
+        }
+        .div img {
+            width: 300px;
+        }
+        .btn {  
+            position: fixed;
+            left: 50%;
+            top: 10px;
+            transform: translate(-50%, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <img src="../image/png_2.png" alt="">
+    </div>
+    <div class="btn">
+        <button>开启移动</button>
+        <button>关闭移动</button>
+    </div>
+</body>
+<script>
+    var drag = Drag(document.querySelector("div.div"));
+    var btn1 = document.querySelectorAll("button")[0];
+    var btn2 = document.querySelectorAll("button")[1];
+    btn1.addEventListener("click", function(event) {
+        drag.enable();
+    }, false);
+    btn2.addEventListener("click", function(event) {
+        drag.disable();
+    }, false);
+
+    function Drag(ele) {
+        var detaX = -100;
+        var detaY = -100;
+        var can_move = false;
+
+        function mousedown(event) {
+            if(event.button === 0) {
+                //计算点击点与元素左上角的距离
+                detaX = event.clientX - this.offsetLeft;
+                detaY = event.clientY - this.offsetTop;
+                can_move = true;
+            }
+        }
+        function mousemove(event) {
+            if(can_move) {
+                event.preventDefault();
+                ele.style.left = event.clientX - detaX + "px";
+                ele.style.top = event.clientY - detaY + "px";
+            }
+        }
+        function mouseup(event) {
+            can_move = false;
+        }
+        
+        return {
+            enable: function() {
+                ele.addEventListener("mousedown", mousedown, false);
+                document.addEventListener("mousemove", mousemove, false);
+                document.addEventListener("mouseup", mouseup, false);
+            },
+            disable: function() {
+                ele.removeEventListener("mousedown", mousedown, false);
+                document.removeEventListener("mousemove", mousemove, false);
+                document.removeEventListener("mouseup", mouseup, false)
+            }
+        };
+    }
+</script>
+</html>

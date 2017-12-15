@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽功能</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        
+        .div {
+            display: inline-block;
+            position: absolute;
+            background: #ccc;
+            border: 10px solid #00f;
+        }
+        .div img {
+            width: 300px;
+        }
+        .btn {  
+            position: fixed;
+            left: 50%;
+            top: 10px;
+            transform: translate(-50%, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <img src="../image/png_2.png" alt="">
+    </div>
+    <div class="btn">
+        <button>开启移动</button>
+        <button>关闭移动</button>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    $(function() {
+        var $div = $("div.div");
+        $div.data({"detaX":-100, "detaY":-100, "can_move":false});
+
+        $div.bind("mousedown", function(event) {
+            if(event.button === 0) {
+                 $(this).data({"detaX":event.clientX-$(this).offset().left, 
+                 "detaY":event.clientY-$(this).offset().top, 
+                 "can_move":true});
+                //  console.log($(this).data("detaX"), $(this).data("detaY"));
+            }
+        });
+        $(document).bind("mousemove", function(event) {
+            if($div.data("can_move")) {
+                event.preventDefault();
+                $div.css({"left":event.clientX-$div.data("detaX")+"px", 
+                "top":event.clientY-$div.data("detaY")+"px"});
+            }
+        });
+        $div.bind("mouseup", function(event) {
+            $(this).data({"can_move":false});
+            // console.log($(this).data());
+        });
+    });
+</script>
+</html>

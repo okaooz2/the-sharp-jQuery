@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position定位</title>
+    <style>
+        #main {
+            position: absolute;
+            width: 1000px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ccc;
+        }
+        #main .exam {
+            width: 200px;
+            margin-left: 20px;
+            margin-top: 15px;
+            border: #ff0 solid 10px;
+            border-bottom-width: 50px;
+        }
+        #main .face {
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <img class="exam" src="../image/jpg_1.jpg">
+        <img class="exam" src="../image/jpg_1.jpg">
+        <img class="exam" src="../image/jpg_1.jpg">
+        <img class="exam" src="../image/jpg_1.jpg">
+
+        <img class="face" src="../image/png_1.png">
+    </div>
+
+
+
+    <script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+
+    <script>
+        $("#main img").ready(function() {
+            $("#main img.exam").mouseenter(function() {
+                var $face_img = $("#main img.face");
+                var x = $(this).position().left + parseInt($(this).css("margin-left")) + 0.5*$(this).outerWidth() - 0.5*$face_img.outerWidth();
+                var y = $(this).position().top + parseInt($(this).css("margin-top")) + $(this).outerHeight();
+
+                $face_img.css({"left":x+"px", "top":y+"px"}).show();
+            });
+            $("#main img.exam").mouseout(function() {
+                $("#main img.face").hide();
+            });
+        });
+    </script>
+</body>
+</html>

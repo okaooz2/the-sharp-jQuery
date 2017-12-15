@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>切换标签页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 1em;
+        }
+
+        .menu {
+            margin-top: 30px;
+            overflow: hidden;
+            background-color: #272822;
+        }
+        .menu li {
+            float: left;
+            margin-left: 30px;
+            padding: 0 10px;
+            line-height: 2;
+            list-style: none;
+            font-size: 1.5em;
+            color: white;
+        }
+        li.heightline-li {
+            background-color: #ccc;
+            color: red;
+            /* font-weight: bold; */
+        }
+
+        .infor {
+            background-color: #ccc;
+            height: 200px;
+            overflow: hidden; 
+        }
+        .infor p {
+            display: none;
+            margin-top: 15px;
+        }
+        p.heightline-p {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li class="heightline-li">C++</li>
+            <li>Java</li>
+            <li>JavaScript</li>
+        </ul>
+    </div>
+
+    <div class="infor">
+        <p class="heightline-p">C++是C语言的继承，它既可以进行C语言的过程化程序设计，又可以进行以抽象数据类型为特点的基于对象的程序设计，还可以进行以继承和多态为特点的面向对象的程序设计。C++擅长面向对象程序设计的同时，还可以进行基于过程的程序设计，因而C++就适应的问题规模而论，大小由之。</p>
+
+        <p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。</p>
+
+        <p>JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。</p>
+    </div>
+
+    <script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+
+    <script>
+        $(".menu li").mouseenter(function() {
+            // // this.style.backgroundColor = "#ccc";
+            // $(this).css({"background-color":"#ccc", "color":"red"});
+            // $(".menu li").not($(this)).css({"background-color":"#272822", "color":"white"});  //此处jQuery对象$(this)可用DOM对象this来替换
+
+            // var index = $(".menu li").index(this);
+            // // $(".infor p").get(index).style.display = "block";
+            // $(".infor p").eq(index).show();
+            // $(".infor p").not($(".infor p").eq(index)).hide();
+
+            $(this).addClass("heightline-li");
+            $(".menu li").not($(this)).removeClass("heightline-li");
+
+            var index = $(".menu li").index($(this));
+            $(".infor p").eq(index).addClass("heightline-p");
+            $(".infor p").not($(".infor p").eq(index)).removeClass("heightline-p");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点赞功能</title>
+</head>
+<body>
+    <hr>
+    <button>赞（<span>100</span>）</button>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    //原生js实现
+    // var button = document.querySelector("button");
+    // var btn_span = button.querySelector("span");
+    // var had_clicked = false;
+    // button.addEventListener("click", function(event) {
+    //     var num = parseInt(btn_span.innerHTML);
+    //     if(!had_clicked) {
+    //         btn_span.innerHTML = ++num;
+    //         had_clicked = !had_clicked;
+    //     }
+    //     else {
+    //         btn_span.innerHTML = --num;
+    //         had_clicked = !had_clicked;
+    //     }
+    // }, false);
+
+    //jQ实现
+    $("button").data({"had_clicked":false}).bind("click", function() {
+        // console.log(this.had_clicked);  //这个证明data()绑定的属性不在dom对象上
+        var $num = $(this).find("span");
+        var val = $num.html();
+        if($(this).data("had_clicked")) {
+            $num.html(--val);
+        }
+        else {
+            $num.html(++val);
+        }
+        $(this).data({"had_clicked":!$(this).data("had_clicked")});
+    });
+</script>
+</html>

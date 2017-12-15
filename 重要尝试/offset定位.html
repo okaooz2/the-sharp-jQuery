@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offset定位</title>
+    <style>
+        img.exam {
+            border: #f00 solid 10px;
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+        img.img {
+            display: none;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+    <img class="exam" src="../image/jpg_1.jpg">
+
+    <img class="img" src="../image/png_1.png">
+
+
+
+    <script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+
+    <script>
+        $("img.exam, img.img").ready(function() {
+            //给每个图片绑定事件
+            $("img.exam").mouseenter(function() {
+                var button_left_x = $(this).offset().left + $(this).width() + parseInt($(this).css("border-left-width"));
+                var button_left_y = $(this).offset().top + $(this).height() + parseInt($(this).css("border-top-width"));
+                // console.log($(this).offset());
+                //移动图片
+                $("img.img").css({"left":button_left_x+"px", "top":button_left_y+"px"}).show();
+            });
+        });
+    </script>
+</body>
+</html>

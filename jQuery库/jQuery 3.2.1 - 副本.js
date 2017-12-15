@@ -4677,10 +4677,14 @@
             return showHide( this );
         },
         toggle: function( state ) {
+            //若有传入参数，且参数为布尔值，则根据参数设定元素的显示和隐藏状态
+            //true为显示状态，false为隐藏状态
             if ( typeof state === "boolean" ) {
                 return state ? this.show() : this.hide();
             }
     
+            //若不传入参数或传入参数不为布尔型，则反转变换元素的显示与隐藏状态
+            //若当前为显示状态，则变为隐藏状态；若当前为隐藏状态，则变为显示状态
             return this.each( function() {
                 if ( isHiddenWithinTree( this ) ) {
                     jQuery( this ).show();
