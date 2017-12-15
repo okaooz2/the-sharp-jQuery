@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡及阻止事件冒泡的测试</title>
+    <style>
+        .div1 {
+            width: 900px;
+            height: 600px;
+            background: #f00;
+        }
+        .div2 {
+            width: 600px;
+            height: 400px;
+            background: #0f0;
+        }
+        .div3 {
+            width: 300px;
+            height: 200px;
+            background: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2">
+            <div class="div3">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    /**
+        原生js测试
+    */
+    var div1 = document.querySelector("div.div1");
+    var div2 = document.querySelector("div.div2");
+    var div3 = document.querySelector("div.div3");
+
+    div1.addEventListener("click", function(event) {
+        console.log("div1");
+        // event.stopPropagation();     //经测试，stopPropagation()函数也可阻止事件捕获
+    }, true);
+    div2.addEventListener("click", function(event) {
+        console.log("div2");
+    }, true);
+    div3.addEventListener("click", function(event) {
+        console.log("div3");
+        // return false;   //原生js中，return不能阻止事件冒泡
+        event.stopPropagation();    //stopPropagation()函数可以阻止事件冒泡
+    }, true);
+
+    /**
+        jq测试
+    */
+    // $("div.div1").bind("click", function() {
+    //     console.log("div1");
+    // });
+    // $("div.div2").bind("click", function() {
+    //     console.log("div2");
+    // });
+    // $("div.div3").bind("click", function() {
+    //     console.log("div3");
+    //     return false;   //jq中，return false可以阻止事件冒泡
+    // });
+</script>
+</html>

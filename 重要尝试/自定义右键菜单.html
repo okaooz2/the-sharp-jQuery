@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义右键菜单</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-size: 1em;
+        }
+        
+        .menu {
+            display: none;
+            position: absolute;
+            width: 100px;
+            height: 150px;
+            text-align: center;
+            background: #ccc;
+        }
+        .menu ul {
+            list-style: none;
+        }
+        .menu ul li {
+            line-height: 1.5em;
+            font-weight: bold;
+        }
+        .menu ul li:hover {
+            color: #f00;
+            background: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li>菜单一</li>
+            <li>菜单二</li>
+            <li>菜单三</li>
+            <li>菜单四</li>
+            <li>菜单五</li>
+        </ul>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    /**
+        js实现
+    */
+    //下面绑定的事件不能阻止默认右键菜单的弹出
+    // document.addEventListener("mouseup", function(event) {   //右键菜单不是由mouseup事件触发的
+    //     // console.log(event.button);
+    //     if(event.button === 2) {
+    //         event.preventDefault();     //不管用
+
+    //         var menu = document.querySelector("div.menu");
+    //         menu.style.left = event.clientX + "px";
+    //         menu.style.top = event.clientY + "px";
+
+    //         return false;   //不管用
+    //     }
+    // }, false);
+
+    // document.addEventListener("contextmenu", function(event) {  //右键菜单是由contextmenu事件触发的
+    //     // console.log(event.button);
+    //     event.preventDefault();     //ok
+
+    //     var menu = document.querySelector("div.menu");
+    //     menu.style.left = event.clientX + "px";
+    //     menu.style.top = event.clientY + "px";
+    //     menu.style.display = "block";
+
+    //     // return false;   //不管用
+    // }, false);
+    // document.addEventListener("click", function(event) {
+    //     event.preventDefault();
+
+    //     var menu = document.querySelector("div.menu");
+    //     menu.style.display = "none";
+    // }, false);
+
+    /**
+        jq实现
+    */
+    $(document).bind("contextmenu", function(event) {
+        // event.preventDefault();     //ok
+
+        $("div.menu").css({"left":event.clientX+"px", "top":event.clientY+"px"})
+        .show();
+
+        return false;   //ok, 此处不同于js
+    })
+    .bind("click", function() {
+        $("div.menu").hide();
+    }); 
+</script>
+</html>
