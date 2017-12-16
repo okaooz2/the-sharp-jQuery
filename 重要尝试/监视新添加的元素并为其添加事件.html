@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监视新添加的元素并为其添加事件</title>
+    <style>
+        div {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button>添加元素</button>
+    <div>
+        <p>6666666666666666666</p>
+        <p>7777777777777777777</p>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    // $("div p").bind("click", function() {
+    //     alert("hellow");
+    // });
+
+    // //error, live()方法从1.9版本就被删除了
+    // $("div p").live("click", function() {
+    //     alert("hellow");
+    // });
+
+    //ok, 注意前面的"div"选择器是父元素， 后面的"p"选择器字符串是在前面父元素的后代元素上筛选的意思
+    //该种参数用法是的on()方法，除了可以为现有匹配元素绑定事件的功能外，还有监听新元素加入并为其绑定事件的功能
+    $("div").on("click", "p", function() {
+        alert("hellow");
+    });
+
+    var i = 0;
+    $("button").bind("click", function() {
+        var num = formatNum(i++, 19);
+        $("div").append("<p>" + num + "</p>");
+    });
+    function formatNum(num, length) {
+        // return Array(length - num.toString().length + 1).join(0) + num;
+
+        var str = "";
+        for(let i=length-num.toString().length; i>0; --i) {
+            str += "0";
+        }
+        return str + num;
+    }
+</script>
+</html>

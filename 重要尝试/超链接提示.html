@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超链接提示</title>
+    <style>
+        a {
+            background: #ccc;
+            font-size: 1.5em;
+        }
+        a .inner {
+            display: inline-block;
+            position: fixed;
+            background: #2f2;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>000001</h1>
+        <h1>000002</h1>
+        <h1>000003</h1>
+        <h1>000004</h1>
+        <h1>000005</h1>
+        <h1>000006</h1>
+        <h1>000007</h1>
+        <h1>000008</h1>
+        <h1>000009</h1>
+        <h1>000010</h1>
+    </div>
+
+    <a href="#" title="这是超链接的提示">提示**************************************************************************************************************************************************</a>
+
+    <div>
+        <h1>000001</h1>
+        <h1>000002</h1>
+        <h1>000003</h1>
+        <h1>000004</h1>
+        <h1>000005</h1>
+        <h1>000006</h1>
+        <h1>000007</h1>
+        <h1>000008</h1>
+        <h1>000009</h1>
+        <h1>000010</h1>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    $("a")
+    .on("mouseenter", function(event) {
+        var txt = "<div class='inner'>" + $(this).prop("title") + "</div>";
+        $(txt)
+        .appendTo(this)
+        .css({
+            "top": $(this).offset().top - $(window).scrollTop() + $(this).height() + 5 + "px", 
+            "left": event.clientX + 5 + "px"
+        })
+        .hide()
+        .show(200);
+
+        this.title = "";
+    })
+    .on("mouseout", function() {
+        this.title = $(this)
+            .find("div.inner")
+            .remove()
+            .html();
+
+    })
+    .on("mousemove", function(event) {
+        $(this)
+        .find("div.inner")
+        .css({
+            "left": event.clientX + 5 + "px"
+        });
+    });
+</script>
+</html>

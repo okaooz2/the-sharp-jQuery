@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片提示</title>
+    <style>
+        .img > img {
+            width: 200px;
+            height: 200px;
+        }
+        .img #mess {
+            position: fixed;
+            border: #000 solid 5px;  
+            background: #000;
+        }
+        .img #mess img {
+            height: 400px;
+        }
+        .img #mess span {
+            display: block;
+            font-size: 1.3em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>000001</h1>
+        <h1>000002</h1>
+        <h1>000003</h1>
+        <h1>000004</h1>
+        <h1>000005</h1>
+        <h1>000006</h1>
+        <h1>000007</h1>
+        <h1>000008</h1>
+        <h1>000009</h1>
+        <h1>000010</h1>
+    </div>
+
+    <div class="img">
+        <img src="./image/jd-img1.jpg" alt="京东图片">
+        <img src="../image/jpg_1.jpg" alt="图片1">
+        <img src="../image/jpg_2.jpg" alt="图片2">
+        <img src="../image/jpg_3.jpg" alt="图片3">
+    </div>
+
+    <div>
+        <h1>000001</h1>
+        <h1>000002</h1>
+        <h1>000003</h1>
+        <h1>000004</h1>
+        <h1>000005</h1>
+        <h1>000006</h1>
+        <h1>000007</h1>
+        <h1>000008</h1>
+        <h1>000009</h1>
+        <h1>000010</h1>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+   $("div.img img")
+   .on("mouseenter", function(event) {
+        var txt = "<div id='mess'><img src='" + this.src + "'><br><span>" + this.alt + "</span></div>";
+        $(txt)
+        .insertAfter(this)
+        .hide()
+        .css({
+            "left": event.clientX + 5 + "px",
+            "top": event.clientY + 20 + "px"
+        })
+        .show(300);
+        console.log($(txt));
+   })
+   .on("mousemove", function(event) {
+       $(this)
+       .next()
+       .css({
+            "left": event.clientX + 5 + "px",
+            "top": event.clientY + 20 + "px"
+        });
+   })
+   .on("mouseout", function() {
+       $(this).next().remove();
+   })
+</script>
+</html>

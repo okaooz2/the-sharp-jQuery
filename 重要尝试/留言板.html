@@ -50,7 +50,7 @@
         .main .all {
             overflow-y: scroll;
             width: 95%;
-            height: 450px;
+            height: 400px;
             margin: 0 auto;
             margin-top: 40px;
             padding: 10px;
@@ -79,38 +79,63 @@
         </div>
     </div>
 </body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
 <script>
     /**
         js实现
     */
-    var textarea = document.querySelector(".main .mess textarea");
-    var btn = document.querySelector(".main .mess button");
-    var all_board = document.querySelector(".main .all");
+    // var textarea = document.querySelector(".main .mess textarea");
+    // var btn = document.querySelector(".main .mess button");
+    // var all_board = document.querySelector(".main .all");
 
-    btn.addEventListener("click", send, false);
-    // textarea.addEventListener("textInput", function(event) {
-    //     if(event.data === "\n") {
+    // btn.addEventListener("click", send, false);
+    // // textarea.addEventListener("textInput", function(event) {
+    // //     if(event.data === "\n") {
+    // //         event.preventDefault();
+    // //         send();
+    // //     }
+    // // }, false);
+    
+    // //由于firefox不支持textInput事件，所以改用keydown事件
+    // textarea.addEventListener("keydown", function(event) {
+    //     if(event.keyCode === 13) {
     //         event.preventDefault();
     //         send();
     //     }
     // }, false);
-    
-    //由于firefox不支持textInput事件，所以改用keydown事件
-    textarea.addEventListener("keydown", function(event) {
-        if(event.keyCode === 13) {
-            event.preventDefault();
-            send();
-        }
-    }, false);
 
-    function send(event) {
-        var val = textarea.value;
-        if(textarea.value !== "") {
+    // function send(event) {
+    //     var val = textarea.value;
+    //     if(textarea.value !== "") {
+    //         var txt = "<div class='all-inner'>" + val + "</div>";
+    //         all_board.innerHTML += txt;
+    //         textarea.value = "";
+    //         //滚动到消息版最下面
+    //         all_board.scrollTo(0, all_board.scrollHeight);
+    //     }
+    // }
+
+    /**
+        jq实现
+    */
+    $(".main .mess button").click(send);
+    $(".main .mess textarea").keydown(function(event) {
+        var key = event.keyCode;
+        if(key === 13) {
+            // event.preventDefault();      //ok
+            send();
+            return false;
+        }
+    });
+
+    function send() {
+        var val = $(".main .mess textarea").val();
+        if(val !== "") {
             var txt = "<div class='all-inner'>" + val + "</div>";
-            all_board.innerHTML += txt;
-            textarea.value = "";
-            //滚动到消息版最下面
-            all_board.scrollTo(0, all_board.scrollHeight);
+            var $all = $(".main .all");
+            $all.append(txt);
+            $(".main .mess textarea").val("");
+            $all.scrollTop($all.height());
         }
     }
 </script>

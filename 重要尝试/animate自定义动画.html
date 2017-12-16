@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animate自定义动画</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        .img{
+            width: 320px;
+            height: 231px;
+            margin: 20px auto;
+            background: #555;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="img">
+        <img src="../image/jpg_3.jpg" alt="">
+    </div>
+    <button>左</button>
+    <button>右</button>
+    <button>上</button>
+    <button>下</button>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    $("button").eq(0).on("click", function() {
+        $(".img img").animate({
+            // "transform": "translate(-100%, 0)"       //不支持
+            // "margin-left": -320
+            "margin-left": -$(".img img").width(),
+            "opacity": 0.5,
+        }, 1000, function() {
+            alert("动画执行完成");
+        });
+    });
+    $("button").eq(1).on("click", function() {
+        $(".img img").animate({
+            "margin-left": $(".img img").width(),
+            "opacity": 0.5,
+        }, 1000, function() {
+            alert("动画执行完成");
+        });
+    });
+    $("button").eq(2).on("click", function() {
+        $(".img img").animate({
+            "margin-top": -$(".img img").height(),
+            "opacity": 0.5,
+        }, 1000, function() {
+            alert("动画执行完成");
+        });
+    });
+    $("button").eq(3).on("click", function() {
+        $(".img img").animate({
+            "margin-top": $(".img img").height(),
+            "opacity": 0.5,
+        }, 1000, function() {
+            alert("动画执行完成");
+        });
+    });
+</script>
+</html>
