@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言板</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .main .mess {
+            margin: 0 auto;
+            width: 95%;
+        }
+        .main .mess h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .main .mess textarea {
+            width: 100%;
+            height: 70px;
+            padding: 10px;
+            border: 2px #e44 solid;
+            border-radius: 20px;
+            resize: none;
+            outline: none;
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+        .main .mess button {
+            width: 50px;
+            height: 25px;
+            margin-left: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            outline: none;
+            background: #ccc;
+        }
+        .main .mess button:hover {
+            background: #333;
+            border: #33e 2px solid;
+            color: #fff;
+        }
+        .main .all {
+            overflow-y: scroll;
+            width: 95%;
+            height: 450px;
+            margin: 0 auto;
+            margin-top: 40px;
+            padding: 10px;
+            background: #ddd;
+        }
+        .main .all .all-inner {
+            padding: 10px;
+            margin-top: 5px;
+            height: 50px;
+            border: #272822 2px solid;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="mess">
+            <h1>留言板</h1>
+            <textarea></textarea>
+            <button>发送</button>
+        </div>
+        <div class="all">
+            <!-- <div class="all-inner">dskjfhf</div> -->
+        </div>
+    </div>
+</body>
+<script>
+    /**
+        js实现
+    */
+    var textarea = document.querySelector(".main .mess textarea");
+    var btn = document.querySelector(".main .mess button");
+    var all_board = document.querySelector(".main .all");
+
+    btn.addEventListener("click", send, false);
+    textarea.addEventListener("textInput", function(event) {
+        if(event.data === "\n") {
+            event.preventDefault();
+            send();
+        }
+    }, false);
+
+    function send(event) {
+        var val = textarea.value;
+        if(textarea.value !== "") {
+            var txt = "<div class='all-inner'>" + val + "</div>";
+            all_board.innerHTML += txt;
+            textarea.value = "";
+            //滚动到消息版最下面
+            all_board.scrollTo(0, all_board.scrollHeight);
+        }
+    }
+</script>
+</html>
