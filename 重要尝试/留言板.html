@@ -88,8 +88,16 @@
     var all_board = document.querySelector(".main .all");
 
     btn.addEventListener("click", send, false);
-    textarea.addEventListener("textInput", function(event) {
-        if(event.data === "\n") {
+    // textarea.addEventListener("textInput", function(event) {
+    //     if(event.data === "\n") {
+    //         event.preventDefault();
+    //         send();
+    //     }
+    // }, false);
+    
+    //由于firefox不支持textInput事件，所以改用keydown事件
+    textarea.addEventListener("keydown", function(event) {
+        if(event.keyCode === 13) {
             event.preventDefault();
             send();
         }
