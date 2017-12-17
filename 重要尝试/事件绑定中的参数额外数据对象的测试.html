@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件绑定中的参数额外数据对象的测试</title>
+</head>
+<body>
+    <button>点我</button>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+$(function() {
+    // $("button").on("click", {kk:100, dd:"hellow"}, function(event) {     //ok
+    // $("button").on("click", [100, "hellow"], function(event) {  //ok
+    // $("button").on("click", false, function(event) {  //ok
+    // $("button").on("click", "false", function(event) {  //error，不报错但没结果，应该是把该字符串当成是选择器字符串了
+    $("button").on("click", 1000, function(event) {  //ok
+        console.log("click");
+        console.log(event.data);    //event.data即为第二个参数传入的变量, 但不能为字符串，大概是与其他重构函数的参数冲突了
+    });
+});
+</script>
+</html>

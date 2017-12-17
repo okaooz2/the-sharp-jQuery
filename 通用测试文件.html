@@ -9,22 +9,13 @@
     </style>
 </head>
 <body>
-    <h1>00000001</h1>
-    <h1>00000002</h1>
-    <h1>00000003</h1>
-    <h1>00000004</h1>
-    <h1>00000005</h1>
-    <h1>00000006</h1>
-    <h1>00000007</h1>
-    <h1>00000008</h1>
-    <h1>00000009</h1>
-    <h1>00000010</h1>
+
 </body>
 <script src="./jQuery库/jQuery 3.2.1.min.js"></script>
 <script>
-    document.addEventListener("click", function(event) {
-        console.log(event.clientY);     //相对于窗口最上角的坐标
-        console.log(event.pageY);       //相对于页面左上角的坐标
-    }, false);
+$(function() {
+    console.log($(document));
+    console.log($());
+});
 </script>
 </html>

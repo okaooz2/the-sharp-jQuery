@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜-1</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑;
+            /* box-sizing: border-box; */
+        }
+
+        #main .img {
+            display: inline-block;
+            /* overflow: hidden; */
+            position: relative;
+        }
+        #main img {
+            vertical-align: middle;     /*除去图片下方的空隙*/
+            height: 200px;
+        }
+        #main .magnifier {
+            position: absolute;
+            background: #00f;
+            opacity: 0.3;
+        }
+        
+        body > .board {
+            position: absolute;
+            z-index: 100;
+            overflow: hidden;
+            border: #272822 solid 3px;
+        }
+        body > .board img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="img"><img src="../image/1920×1080大图/1.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/2.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/3.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/4.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/5.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/6.jpg" alt=""></div>
+        <div class="img"><img src="../image/1920×1080大图/7.jpg" alt=""></div>
+        <div class="img"><img src="../image/jpg_2.jpg" alt=""></div>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+    $(function() {
+        $("#main .img")
+        .data({
+            // "side_len": $(this).height()*0.3,   //error, 经测试，此处的this为document
+            // "half_side_len": 0.5*$(this).height()*0.3,
+            "side_len": $("#main .img").height()*0.3,
+            "half_side_len": 0.5*$("#main .img").height()*0.3
+        })
+        .on("mouseenter", function(event) {
+            //新建一个框标示放大范围
+            var $magnifier = $("<div class='magnifier'></div>");
+            $magnifier
+            .appendTo(this)
+            .css({
+                "width": $(this).data("side_len") + "px",
+                "height": $(this).data("side_len") + "px",
+                "left": event.pageX - $(this).data("half_side_len") + "px",
+                "top": event.pageY - $(this).data("half_side_len") + "px"
+            });
+
+            var that = this;
+            var $board = $("<div class='board'><img src='" + $(this).children("img").prop("src") + "'></div>");
+            $board
+            .appendTo(document.body)
+            .children("img").ready(function() {
+                // console.log(this);       //经测试，此处的this为document
+                $board.children("img").height(1080);
+
+                var side_len = $board.children("img").height()*0.3;
+                var left = $(that).offset().left;
+                var top = $(that).offset().top;
+                if(left + $(that).width() + side_len + 5 <= $(window).width()) {
+                    left += $(that).width() + 5;
+                }
+                else {
+                    left -= side_len + 5;
+                }
+                if(top + side_len <= $(window).height()) {
+                    top;
+                }
+                else {
+                    top -= side_len -$(that).height();
+                }
+
+                $board.css({
+                    "width": side_len + "px",
+                    "height":side_len + "px",
+                    "left": left + "px",
+                    "top": top + "px"
+                });
+            });
+        })
+        .on("mousemove", function(event) {
+            var offset = $(this).offset();
+            var deltaX = event.pageX - offset.left;
+            var deltaY = event.pageY - offset.top;
+            
+            var left = -100;
+            if(deltaX < $(this).data("half_side_len")) {
+                left = 0;
+            }
+            else if(deltaX > $(this).width() - $(this).data("half_side_len")) {
+                left = $(this).width() - $(this).data("side_len");
+            }
+            else {
+                left = event.pageX - offset.left - $(this).data("half_side_len");
+            }
+            
+            var top = -100;
+            if(deltaY < $(this).data("half_side_len")) {
+                top = 0;
+            }
+            else if(deltaY > $(this).height() - $(this).data("half_side_len")) {
+                top = $(this).height() - $(this).data("side_len");
+            }
+            else {
+                top = event.pageY - offset.top - $(this).data("half_side_len");
+            }
+
+            $(this)
+            .find(".magnifier")
+            .css({
+                "left": left + "px",
+                "top": top + "px"
+            });
+
+            $("body > .board img")
+            .css({
+                "left": -left/$(this).width()*$("body > .board img").width() + "px",
+                "top": -top/$(this).height()*$("body > .board img").height() + "px",
+            });
+        })
+        .on("mouseleave", function() {
+            $(this).find("div.magnifier").remove();
+            $("body > .board").remove();
+        });
+    });
+</script>
+</html>
