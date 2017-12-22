@@ -6,16 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>通用测试文件</title>
     <style>
+        .div1 {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 300px;
+            height: 300px;
+            background: #ccc;
+            border: 2px solid #000;
+        }
     </style>
 </head>
 <body>
+   <div class="div1">
+       
+   </div>
 
+   <button>点我</button>
 </body>
 <script src="./jQuery库/jQuery 3.2.1.min.js"></script>
 <script>
 $(function() {
-    console.log($(document));
-    console.log($());
+    $("button")
+    .data({"timeout": null})
+    .on("click", function() {
+        // clearTimeout($(this).data("timeout"));      //ok
+        clearTimeout($(this).data().timeout);       //ok
+        $(this).data({"timeout": setTime()});
+
+        function setTime() {
+            return setTimeout(function() {
+                $(".div1").animate({
+                // "left": "100px"
+                "left": "+=100px"
+                }, 1000, function() {
+                    $(this).css({"background": "#f00"});
+                });
+            }, 500);
+        }
+    });
 });
 </script>
 </html>

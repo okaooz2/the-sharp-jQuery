@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动栏_1</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑;
+        }
+
+        .main {
+            width: 564px;;
+            overflow: hidden;
+            border: 2px solid #000;
+            margin: 30px auto 0px;
+        }
+
+        .main .top {
+            overflow: hidden;
+            background: #eee;
+        }
+        .main .top h2 {
+            float: left;
+            text-indent: -9999px;
+            width: 85px;
+            height: 35px;
+            background: url("./image/btn_cartoon.gif");
+            background-position: 0px -100px;
+        }
+        .main .top .tag {
+            float: left;
+            margin-left: 15px;
+        }
+        .main .top .tag div {
+            float: left;
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 0px;
+            height: 0px;
+            border: #00f solid 4px;
+            border-radius: 50%;
+            margin-top: 12px;
+            margin-left: 7px;
+        }
+        .main .top .tag div:hover {
+            border-color: #ff0;
+        }
+        .main .top .tag div.current-page {
+            border-color: #f00;
+        }
+        .main .top .button {
+            float: left;
+            overflow: hidden;
+            margin-left: 15px;
+            margin-top: 7px;
+        }
+        .main .top .button span {
+            float: left;
+            text-indent: -9999px;
+            overflow: hidden;
+            width: 30px;
+            height: 25px;
+            background: url("./image/btn_cartoon.gif") no-repeat;
+            cursor: pointer;
+        }
+        .main .top .button span:first-child {
+            background-position: 0px -400px;
+        }
+        .main .top .button span:nth-child(2) {
+            background-position: -30px -400px;
+        }
+        .main .top a {
+            float: right;
+            text-decoration: none;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+
+        .main .content {
+            position: relative;
+            overflow: hidden;
+            height: 210px;
+        }
+        .main .content img {
+            width: 121px;
+            height: 161px;
+        }
+        .main .content a {
+            text-decoration: none;
+        }
+        .main .content ul {
+            list-style: none;
+            position: absolute;
+            width: 6000px;
+            overflow: hidden;
+        }
+        .main .content ul li {
+            float: left;
+            margin: 10px;
+        }
+        .main ul li h4 {
+            display: block;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <h2>卡通动漫</h2>
+            <div class="tag">
+                
+            </div>
+            <div class="button">
+                <span class="pre">上一页</span>
+                <span class="next">下一页</span>
+            </div>
+            <a href="#"><i>更多>></i></a>
+        </div>
+        <div class="content">
+            <ul>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/名侦探柯南.jpg" alt="名侦探柯南"></a>
+                        <h4>
+                            <a href="">名侦探柯南</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/名侦探柯南.jpg" alt="名侦探柯南"></a>
+                        <h4>
+                            <a href="">名侦探柯南</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/名侦探柯南.jpg" alt="名侦探柯南"></a>
+                        <h4>
+                            <a href="">名侦探柯南</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/名侦探柯南.jpg" alt="名侦探柯南"></a>
+                        <h4>
+                            <a href="">名侦探柯南</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/海贼王.jpg" alt="海贼王"></a>
+                        <h4>
+                            <a href="">海贼王</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/海贼王.jpg" alt="海贼王"></a>
+                        <h4>
+                            <a href="">海贼王</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/海贼王.jpg" alt="海贼王"></a>
+                        <h4>
+                            <a href="">海贼王</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/海贼王.jpg" alt="海贼王"></a>
+                        <h4>
+                            <a href="">海贼王</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/火影忍者.jpg" alt="火影忍者"></a>
+                        <h4>
+                            <a href="">火影忍者</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/火影忍者.jpg" alt="火影忍者"></a>
+                        <h4>
+                            <a href="">火影忍者</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/火影忍者.jpg" alt="火影忍者"></a>
+                        <h4>
+                            <a href="">火影忍者</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/火影忍者.jpg" alt="火影忍者"></a>
+                        <h4>
+                            <a href="">火影忍者</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/爱探险的朵拉8.jpg" alt="爱探险的朵拉8"></a>
+                        <h4>
+                            <a href="">爱探险的朵拉8</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/爱探险的朵拉8.jpg" alt="爱探险的朵拉8"></a>
+                        <h4>
+                            <a href="">爱探险的朵拉8</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/爱探险的朵拉8.jpg" alt="爱探险的朵拉8"></a>
+                        <h4>
+                            <a href="">爱探险的朵拉8</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/爱探险的朵拉8.jpg" alt="爱探险的朵拉8"></a>
+                        <h4>
+                            <a href="">爱探险的朵拉8</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/龙珠超.jpg" alt="龙珠超"></a>
+                        <h4>
+                            <a href="">龙珠超</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/龙珠超.jpg" alt="龙珠超"></a>
+                        <h4>
+                            <a href="">龙珠超</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/龙珠超.jpg" alt="龙珠超"></a>
+                        <h4>
+                            <a href="">龙珠超</a>
+                        </h4>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href=""><img src="./image/龙珠超.jpg" alt="龙珠超"></a>
+                        <h4>
+                            <a href="">龙珠超</a>
+                        </h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+$(function() {
+    const num_of_img_in_one_page = 4;
+    var $ul = $(".main .content ul");
+    $ul.data({
+        "page_width": $(this).find("li").outerWidth(true)*num_of_img_in_one_page,
+        "current_page": 1,
+        "howmany_page": Math.ceil($(".main .content li").length/num_of_img_in_one_page)
+    });
+
+    //添加标签部分
+    var $tag = $(".main .top .tag");
+    for(let i=1, len=$ul.data("howmany_page"); i<=len; ++i) {
+        $tag.append("<div>" + i + "</div>");
+    }
+    var $tages = $tag.find("div");
+    $tages.first().addClass("current-page");
+    
+
+    //绑定左键事件
+    $(".main .pre")
+    .on("click", function() {
+        var $_ul = $ul;
+        if($_ul.is(":animated")) {
+            return false;
+        }
+
+        var current_page = $_ul.data("current_page");
+        if(current_page === 1) {
+            $_ul.animate({
+                "left": -($_ul.data("howmany_page") - 1)*$_ul.data("page_width")
+            }, 500);
+            current_page =  $_ul.data("howmany_page");
+        }
+        else {
+            $_ul.animate({
+                "left": "+=" + $_ul.data("page_width") + "px"
+            }, 500);
+            --current_page;
+        }
+
+        $_ul.data({"current_page": current_page});
+        $tages.each(function() {
+            if($(this).html() == $_ul.data("current_page")) {
+                $(this).addClass("current-page");
+            }
+            else {
+                $(this).removeClass("current-page");
+            }
+        });
+    });
+
+    //绑定右键事件
+    $(".main .next")
+    .on("click", function() {
+        var $_ul = $ul;
+        if($_ul.is(":animated")) {
+            return false;
+        }
+
+        var current_page = $_ul.data("current_page");
+        if(current_page === $_ul.data("howmany_page")) {
+            $_ul.animate({
+                "left": 0 + "px"
+            }, 500);
+            current_page = 1;
+        }
+        else {
+            $_ul.animate({
+                "left": "-=" + $_ul.data("page_width") + "px"
+            }, 500);
+            ++current_page;
+        }
+
+        $_ul.data({"current_page": current_page});
+        $tages.each(function() {
+            if($(this).html() == $_ul.data("current_page")) {
+                $(this).addClass("current-page");
+            }
+            else {
+                $(this).removeClass("current-page");
+            }
+        });
+    });
+
+    //绑定标签
+    $tages.on("click", function() {
+        var $_ul = $ul;
+        if($_ul.is(":animated")) {
+            return false;
+        }
+
+        var current_page = $_ul.data("current_page");
+        var to_page = parseInt($(this).html());
+        $_ul.animate({
+            "left": "-=" + (to_page - current_page)*$_ul.data("page_width") + "px"
+        }, 500);
+
+        $_ul.data({"current_page": to_page});
+        $tages.each(function() {
+            $(this).removeClass("current-page");
+        });
+        $(this).addClass("current-page");
+    });
+});
+</script>
+</html>

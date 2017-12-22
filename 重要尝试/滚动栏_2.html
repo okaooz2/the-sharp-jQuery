@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动栏_2</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 微软雅黑;
+            font-size: 1em;
+        }
+
+        .display {
+            width: 604px;
+            overflow: hidden;
+            margin: 25px auto;
+            border: #eaeaea solid 3px;
+        }
+
+        .display .top {
+            background: #eaeaea;
+            overflow: hidden;
+        }
+        .display .top h2 {
+            float: left;
+            text-indent: -9999px;
+            width: 85px;
+            height: 35px;
+            background: url(./image/btn_cartoon.gif) no-repeat;
+            background-position: 0px -100px;
+        }
+        .display .top .button  {
+            float: left;
+            overflow: hidden;
+            margin-top: 6px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        .display .top .button span {
+            display: block;
+            float: left;
+            text-indent: -9999px;
+            width: 30px;
+            height: 25px;
+        }
+        .display .top .button span.pre {
+            background: url(./image/btn_cartoon.gif) no-repeat;
+            background-position: 0px -400px;
+        }
+        .display .top .button span.next {
+            background: url(./image/btn_cartoon.gif) no-repeat;
+            background-position: -30px -400px;
+        }
+        .display .top .button span.pre:active {
+            background: url(./image/btn_cartoon.gif) no-repeat;
+            background-position: 0px -500px;
+        }
+        .display .top .button span.next:active {
+            background: url(./image/btn_cartoon.gif) no-repeat;
+            background-position: -30px -500px;
+        }
+        .display .top h4 {
+            float: right;
+            margin-top: 6px;
+        }
+        .display .top h4 a {
+            text-decoration: none;
+        }
+
+        .display .content {
+            position: relative;
+            width: 6000px;
+            height: 215px;
+        }
+        .display .content img {
+            width: 121px;
+            height: 161px;
+        }
+        .display .content ul {
+            position: absolute;
+            list-style: none;
+            overflow: hidden;
+        }
+        .display .content ul li {
+            float: left;
+            margin: 15px;
+        }
+        .display .content h4 {
+            display: block;
+            text-align: center;
+        }
+        .display .content h4 a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="display">
+        <div class="top">
+            <h2>卡通动漫</h2>
+            <div class="button">
+                <span class="pre">前一页</span>
+                <span class="next">后一页</span>
+            </div>
+            <h4><a href=""><i>更多>></i></a></h4>
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="">
+                    <img src="./image/名侦探柯南.jpg" alt="名侦探柯南"></a>
+                    <h4><a href="">名侦探柯南</a></h4>
+                </li>
+                <li><a href="">
+                    <img src="./image/海贼王.jpg" alt="海贼王"></a>
+                    <h4><a href="">海贼王</a></h4>
+                </li>
+                <li><a href="">
+                    <img src="./image/火影忍者.jpg" alt="火影忍者"></a>
+                    <h4><a href="">火影忍者</a></h4>
+                </li>
+                <li><a href="">
+                    <img src="./image/爱探险的朵拉8.jpg" alt="爱探险的朵拉8"></a>
+                    <h4><a href="">爱探险的朵拉8</a></h4>
+                </li>
+                <li>
+                    <a href=""><img src="./image/龙珠超.jpg" alt="龙珠超"></a>
+                    <h4><a href="">龙珠超</a></h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../jQuery库/jQuery 3.2.1.min.js"></script>
+<script>
+$(function() {
+    $items = $(".display .content ul");
+    $items.data({
+        "item_length": $items.find("li").outerWidth(true)
+    });
+
+    //绑定左移按钮
+    $(".display .top .pre").on("click", function() {
+        var $_items = $items;
+
+        if($_items.is(":animated")) {
+            return false;
+        }
+
+        var $first = $_items.find("li").first();
+        $first.clone(true).appendTo($_items);
+
+        $_items.animate({
+            "left": "-=" + $_items.data("item_length") + "px"
+        }, 500, function() {
+            $first.remove();
+            $_items.css({
+                "left": 0 + "px"
+            });
+        });
+    });
+
+    //绑定右移按钮
+    $(".display .top .next").on("click", function() {
+        var $_items = $items;
+
+        if($_items.is(":animated")) {
+            return false;
+        }
+
+        var $last = $_items.find("li").last();
+        $last.clone(true).insertBefore($_items.find("li").first());
+        $_items.css({
+            "left": -$_items.data("item_length") + "px"
+        })
+
+        $_items.animate({
+            "left": "+=" + $_items.data("item_length") + "px"
+        }, 500, function() {
+            $last.remove();
+        });
+    });
+});
+</script>
+</html>
